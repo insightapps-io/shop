@@ -18,7 +18,7 @@ const App = () => {
         const userRef = await createUserProfileDocument(userAuth);
         cleanupSnapShot = userRef.onSnapshot((snapShot) => {
           setCurrentUser({
-            id: snapShot.id,
+            uid: snapShot.id,
             ...snapShot.data(),
           });
         });
@@ -30,6 +30,8 @@ const App = () => {
       cleanupAuth();
     };
   }, []);
+
+  console.log(currentUser);
 
   return (
     <div>
