@@ -13,12 +13,12 @@ const App = () => {
   useEffect(() => {
     let cleanupSnapShot = null;
     const cleanupAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (!userAuth) setCurrentUser(userAuth);
+      if (!userAuth) setCurrentUser(null);
       else {
         const userRef = await createUserProfileDocument(userAuth);
         cleanupSnapShot = userRef.onSnapshot((snapShot) => {
           setCurrentUser({
-            uid: snapShot.id,
+            id: snapShot.id,
             ...snapShot.data(),
           });
         });
@@ -30,8 +30,6 @@ const App = () => {
       cleanupAuth();
     };
   }, []);
-
-  console.log(currentUser);
 
   return (
     <div>
