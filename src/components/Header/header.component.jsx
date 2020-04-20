@@ -11,10 +11,8 @@ import { connect } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import CartIcon from '../CartIcon/carticon.component';
 import CartDropdown from '../CartDropdown/cartdropdown.component';
-import {
-  selectCurrentUser,
-  selectCartHidden,
-} from '../../redux/cart/cart.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 const Header = ({ currentUser, hidden }) => {
   return (
